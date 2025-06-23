@@ -4,15 +4,14 @@
   "description": "CLI and utilities for analyzing memory leaks with MemLab and Playwright",
   "main": "lib/analyze-leaks.js",
   "bin": {
-    "analyze-leaks": "./bin/analyze-leaks.js"
+    "analyze-leaks": "bin/analyze-leaks.js"
   },
   "scripts": {
     "analyze": "node bin/analyze-leaks.js",
     "changeset": "changeset",
     "changeset:version": "changeset version",
     "changeset:publish": "changeset publish",
-    "changeset:status": "changeset status",
-    "prepublishOnly": "echo \"Error: This package is managed by Changesets. Please use 'npm run changeset:publish' or 'npm run changeset:version' instead of 'npm publish'.\" && exit 1"
+    "changeset:status": "changeset status"
   },
   "dependencies": {
     "memlab": "^1.1.59"
@@ -21,7 +20,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yanirmanor/memlab-analyzer.git"
+    "url": "git+https://github.com/yanirmanor/memlab-analyzer.git"
   },
   "homepage": "https://github.com/yanirmanor/memlab-analyzer",
   "keywords": [
