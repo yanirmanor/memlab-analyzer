@@ -4,8 +4,16 @@ CLI and utilities for analyzing memory leaks with MemLab and Playwright.
 
 ## Installation
 
+To install the CLI globally:
+
+```bash
+npm install -g memlab-analyzer
 ```
-npm install -g ./memlab-analyzer
+
+To install as a dependency in your project:
+
+```bash
+npm install memlab-analyzer
 ```
 
 ## Usage
@@ -24,65 +32,14 @@ analyze-leaks [snapshotDir] [outputFormat] [outputFile]
 
 ### As a Library
 
-#### 1. Take Snapshots in Playwright
+To use `memlab-analyzer` as a library in your project:
 
 ```js
-const {
-  takeJSHeapSnapshot,
-  SnapshotTag,
-  createSnapSeqMetadata,
-  createRunMetadata,
-} = require("memlab-analyzer/lib/memlab.util");
+const { analyzeMemoryLeaks, formatBytes, generateTextReport } = require("memlab-analyzer");
 
-// Example Playwright test
-import { test } from "@playwright/test";
-
-test("Memory leak snapshot example", async ({ page, browser }) => {
-  const workDir = "./memlab-snapshots";
-  await page.goto("https://your-app-url.com");
-  await takeJSHeapSnapshot(page, SnapshotTag.BASELINE, workDir);
-
-  // Simulate user action
-  await page.click("#some-button");
-  await takeJSHeapSnapshot(page, SnapshotTag.TARGET, workDir);
-
-  // Revert action
-  await page.goBack();
-  await takeJSHeapSnapshot(page, SnapshotTag.FINAL, workDir);
-
-  // Create metadata for MemLab
-  await createSnapSeqMetadata(
-    {
-      urls: [
-        "https://your-app-url.com",
-        "https://your-app-url.com/after-action",
-        "https://your-app-url.com",
-      ],
-      titles: ["Base", "After Action", "Base Again"],
-      baseUrl: "https://your-app-url.com",
-      actionName: "click-some-button",
-    },
-    workDir
-  );
-
-  await createRunMetadata(
-    {
-      browserName: browser._initializer.name || "chromium",
-      browserVersion: await page.evaluate(() => navigator.userAgent),
-      testName: "memory-leak-test",
-    },
-    workDir
-  );
-});
-```
-
-#### 2. Analyze the Snapshots
-
-```js
-const { analyzeMemoryLeaks } = require("memlab-analyzer/lib/analyze-leaks");
-
+// Example:
 (async () => {
-  const leaks = await analyzeMemoryLeaks("./memlab-snapshots2", "console");
+  const leaks = await analyzeMemoryLeaks("./memlab-snapshots", "console");
   if (leaks.length) {
     console.log("Leaks found:", leaks);
   } else {
@@ -93,18 +50,15 @@ const { analyzeMemoryLeaks } = require("memlab-analyzer/lib/analyze-leaks");
 
 ## API
 
-### `memlab.util.js`
+When you `require("memlab-analyzer")`, you get an object with the following functions:
 
-- `takeJSHeapSnapshot(page, tag, outputDir)`
-- `createSnapSeqMetadata(metadata, outputDir)`
-- `createRunMetadata(config, outputDir)`
-- `SnapshotTag` (enum)
-
-### `analyze-leaks.js`
-
-- `analyzeMemoryLeaks(workDir, outputFormat, outputFile)`
-- `formatBytes(bytes, decimals)`
-- `generateTextReport(leaks, workDir)`
+- `analyzeMemoryLeaks(workDir, outputFormat, outputFile)`: Analyzes memory snapshots.
+  - `workDir` (string, optional): Directory with Memlab snapshots. Default: `./memlab-snapshots`.
+  - `outputFormat` (string, optional): `console`, `json`, or `text`. Default: `console`.
+  - `outputFile` (string, optional): Base name for report files (if `json` or `text`). Default: `memlab-report`.
+  - Returns: Promise resolving to an array of detected leaks.
+- `formatBytes(bytes, decimals)`: Utility to format byte counts into human-readable strings (KB, MB, etc.).
+- `generateTextReport(leaks, workDir)`: Generates a string report from leak data.
 
 ## Example
 
@@ -115,3 +69,18 @@ analyze-leaks ./memlab-snapshots text my-report
 ## License
 
 MIT
+
+## Contributing
+
+This project uses [Changesets](https://github.com/changesets/changesets) to manage releases. If you are contributing code that you believe should trigger a new version of the package (e.g., bug fixes, new features, breaking changes), please include a changeset with your pull request.
+
+To add a changeset:
+
+1. After making your code changes, run the following command:
+   ```bash
+   npm run changeset
+   ```
+2. Follow the prompts from the Changesets CLI to select the type of change (patch, minor, or major) for each modified package (in this case, just `memlab-analyzer`) and write a brief description of your changes. This description will be used in the changelog.
+3. Commit the generated changeset file (located in the `.changeset` directory) along with your code changes.
+
+This helps automate the versioning and changelog generation process.
