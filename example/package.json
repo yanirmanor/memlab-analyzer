@@ -1,0 +1,25 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test --config=playwright.config.js",
+    "test:ui": "playwright test --config=playwright.config.js --ui",
+    "test:update-snapshot": "playwright test --config=playwright.config.js --update-snapshots",
+    "test:debug": "PWDEBUG=1 playwright test --config=playwright.config.js",
+    "analyze": "playwright show-trace trace.zip",
+    "analyze-memory": "node analyze-memory-leaks.js",
+    "analyze-leaks": "node ../bin/analyze-leaks.js"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@memlab/api": "^1.0.40",
+    "@memlab/core": "^1.1.41",
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.21",
+    "memlab": "^1.1.58"
+  },
+  "author": "yanirmanor",
+  "license": "ISC",
+  "description": ""
+}

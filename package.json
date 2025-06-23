@@ -1,0 +1,17 @@
+{
+  "name": "memlab-analyzer",
+  "version": "1.0.0",
+  "description": "CLI and utilities for analyzing memory leaks with MemLab and Playwright",
+  "main": "lib/analyze-leaks.js",
+  "bin": {
+    "analyze-leaks": "./bin/analyze-leaks.js"
+  },
+  "scripts": {
+    "analyze": "node bin/analyze-leaks.js"
+  },
+  "dependencies": {
+    "memlab": "^1.1.59"
+  },
+  "author": "yanir manor",
+  "license": "MIT"
+}
