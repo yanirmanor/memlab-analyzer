@@ -4,7 +4,7 @@
   "description": "CLI and utilities for analyzing memory leaks with MemLab and Playwright",
   "main": "lib/analyze-leaks.js",
   "bin": {
-    "analyze-leaks": "bin/analyze-leaks.js"
+    "analyze-leaks": "./bin/analyze-leaks.js"
   },
   "scripts": {
     "analyze": "node bin/analyze-leaks.js",
@@ -20,7 +20,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yanirmanor/memlab-analyzer.git"
+    "url": "https://github.com/yanirmanor/memlab-analyzer.git"
   },
   "homepage": "https://github.com/yanirmanor/memlab-analyzer",
   "keywords": [
@@ -38,6 +38,7 @@
   "files": [
     "bin/",
     "lib/analyze-leaks.js",
+    "lib/memlab.util.js",
     "LICENSE",
     "README.md"
   ],
