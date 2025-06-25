@@ -32,7 +32,7 @@ analyze-leaks [snapshotDir] [outputFormat] [outputFile]
 
 ### As a Library
 
-You can use `memlab-analyzer` to both take snapshots in your Playwright tests and to analyze them
+You can use `memlab-analyzer` to both take snapshots in your Playwright tests and to analyze them.
 
 #### 1. Taking Snapshots in Playwright
 
