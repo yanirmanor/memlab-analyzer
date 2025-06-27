@@ -4,7 +4,7 @@ const {
   SnapshotTag,
   createSnapSeqMetadata,
   createRunMetadata,
-} = require("../lib/memlab.util");
+} = require("memlab-analyzer");
 const fs = require("fs");
 
 test.describe("Memory Analysis Example", () => {

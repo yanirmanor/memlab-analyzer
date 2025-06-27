@@ -3,12 +3,10 @@
   "workspaces": {
     "": {
       "name": "demo",
-      "devDependencies": {
-        "@memlab/api": "^1.0.40",
-        "@memlab/core": "^1.1.41",
+      "dependencies": {
         "@playwright/test": "^1.52.0",
         "@types/node": "^22.15.21",
-        "memlab": "^1.1.58",
+        "memlab-analyzer": "^1.1.0",
       },
     },
   },
@@ -312,6 +310,8 @@
     "math-intrinsics": ["math-intrinsics@1.1.0", "", {}, "sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g=="],
 
     "memlab": ["memlab@1.1.59", "", { "dependencies": { "@memlab/api": "^1.0.41", "@memlab/cli": "^1.0.44", "@memlab/core": "^1.1.42", "@memlab/e2e": "^1.0.42", "@memlab/heap-analysis": "^1.0.39", "@memlab/lens": "^1.0.2", "ansi": "^0.3.1", "babar": "^0.2.0", "chalk": "^4.0.0", "fs-extra": "^4.0.2", "minimist": "^1.2.8", "puppeteer": "^22.12.1", "puppeteer-core": "^22.12.1", "string-width": "^4.2.0", "util.promisify": "^1.1.1", "xvfb": "^0.4.0" }, "bin": { "memlab": "bin/memlab" } }, "sha512-Mwd/sYv/Ymx5gev7Bb/prGnKNI/w577+7dLth9kocUftk1xL6cxCLaD/hEjQ0qBzl8TbZg9XVAof7gDSr0JQFg=="],
+
+    "memlab-analyzer": ["memlab-analyzer@1.1.0", "", { "dependencies": { "memlab": "^1.1.59" }, "bin": { "analyze-leaks": "bin/analyze-leaks.js" } }, "sha512-EGfNgm4jDwFJKfAcHaAi7lMaIbOGJLUOar24/74zMHlGpMLIOB8at7eN7BUa5RKL8Bm+IvgZ2aNZj8gNLJrblg=="],
 
     "minimist": ["minimist@1.2.8", "", {}, "sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA=="],
 

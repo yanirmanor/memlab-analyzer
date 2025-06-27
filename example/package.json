@@ -9,17 +9,14 @@
     "test:debug": "PWDEBUG=1 playwright test --config=playwright.config.js",
     "analyze": "playwright show-trace trace.zip",
     "analyze-memory": "node analyze-memory-leaks.js",
-    "analyze-leaks": "node ../bin/analyze-leaks.js"
+    "analyze-leaks": "analyze-leaks"
   },
-  "keywords": [],
-  "devDependencies": {
-    "@memlab/api": "^1.0.40",
-    "@memlab/core": "^1.1.41",
-    "@playwright/test": "^1.52.0",
-    "@types/node": "^22.15.21",
-    "memlab": "^1.1.58"
-  },
-  "author": "yanirmanor",
+  "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "memlab-analyzer": "^1.1.0",
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.21"
+  }
 }
