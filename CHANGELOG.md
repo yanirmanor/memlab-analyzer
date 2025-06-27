@@ -1,5 +1,11 @@
 # memlab-analyzer
 
+## 1.1.1
+
+### Patch Changes
+
+- 198b9c6: fix the example
+
 ## 1.1.0
 
 ### Minor Changes
